@@ -1,0 +1,218 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.login::selection {
+  color: #FFFFFF;
+  background: #3297FD;
+}
+
+.login {
+  min-height: 100vh;
+  font-family: Roboto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #06467b 0%, #021d3b 45%, #03111e 100%);
+
+  /* background: linear-gradient(135deg, #C7E7F4 0%, #aec8e6a3 50%, #4a75bc3d 100%); */
+    /* background: linear-gradient(250deg, #c7e7f4cc -53.45%, #d8ebf7cc -53.45%, #aec8e6a3 9.69%, #7c9fd170 59.76%, #4a75bc3d 99.1%), #FFF; */
+
+}
+
+/* central card */
+.login .content {
+  width: 425px;
+  max-width: calc(100% - 48px);
+  /* background: linear-gradient(180deg, #06467b 0%, #021d3b 45%, #03111e 100%); */
+  background: #ffffff;
+  border-radius: 10px !important;
+  padding: 65px 38px;
+  box-shadow: 0 10px 30px rgba(10,30,60,0.08);
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  margin: 0;
+}
+
+/* small rounded icon box above card */
+.login .logo {
+  border-radius: 6px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* title centered small */
+.login .content h3,
+.login .content .form-title {
+  font-family: Roboto;
+  margin: 30px 0;
+  color: #0A0A0A;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* input wrapper: subtle border and icon */
+.login .content .input-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 13px;
+  border-radius: 6px !important;
+  margin: 8px 0 5px;
+  border: 0.512px solid rgba(74, 117, 188, 0.30);
+  background: #FFF;
+}
+
+.login .content .email-group.disabled {
+    background-color: #f7f7f7 !important;
+    cursor: not-allowed;
+}
+
+.login .content .email-group.disabled input[readonly] {
+    cursor: not-allowed;
+}
+
+/* input icon style */
+.login .content .input-icon i {
+  color: #99A1AF;
+  font-size: 14px;
+  margin: 0 ;
+}
+
+/* input field visual */
+.login .content .form-control,
+.login .content input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  padding: 8px 6px 8px 25px;
+  color: #0A0A0A;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login .content .form-control::selection,
+.login .content input::selection {
+  color: #FFFFFF;
+  background: #3297FD;
+}
+
+.login .content input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.login .content .email-group.disabled input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f7f7f7 inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+
+.login .content input::selection {
+  background: transparent;
+}
+/* focus state */
+.login .content .input-icon:focus-within {
+  border-color: #4b89ff;
+  box-shadow: 0 8px 24px rgba(75,137,255,0.06);
+}
+
+/* primary button full width dark navy */
+.login .content .form-actions {
+  margin-top: 6px;
+  width: 100% ;
+  text-align: center;
+  display: inline-block;
+  padding: 0;
+}
+.login .content .form-actions .btn,
+.login .content .form-actions .btn.green-haze {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 6px !important;
+  background: #0b2340;
+  color: #fff;
+  border: 0;
+  display: inline-block;
+  font-size: 13px;
+}
+
+/* small powered by text under button */
+.login .content .create-account,
+.login .content .login-footer,
+.login .copyright {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #98a7bf;
+  text-align: center;
+}
+
+/* error messages: small, red and left aligned inside card */
+.login .content .errorMessage,
+.login .content .help-block,
+.login .content .field-error {
+  color: red;
+  font-size: 12px;
+  text-align: left;
+}
+
+.login .content .powered-by {
+  margin: 20px 0 0;
+}
+
+.login .content .powered-by p {
+  color: #99A1AF;
+  text-align: center;
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* responsive */
+@media (max-width: 480px) {
+  .login::before { inset: 10px; border-width: 3px; }
+  .login .content { width: 92%; padding: 20px; }
+  .login .logo, .login .content .login-icon { width: 48px; height: 48px; margin-top: -34px; }
+}
+
+/* keep legacy select2 adjustments */
+.login .content .select2-container,
+.login .content .has-error .select2-container { border-left: 0 !important; }
+
+/* Resend OTP Link Styles */
+.login .content .resend_otp_link {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	column-gap: 5px;
+	margin-top: 8px;
+	color: #878787;
+	font-size: 12px;
+}
+
+.login .content .resend_otp_link .resend_otp {
+	color: #2874f0;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.login .content .resend_otp_link .resend_otp:hover {
+	text-decoration: underline;
+}
+
+.login .content .resend_otp_link .resend_loading {
+	width: 15px;
+	height: 15px;
+}

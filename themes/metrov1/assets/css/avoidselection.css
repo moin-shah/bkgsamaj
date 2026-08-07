@@ -1,0 +1,16 @@
+tbody tr td, th, .summary {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome 6.0+, Safari 3.1+, Edge & Opera 15+ */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE 10+ and Edge */
+    user-select: none;           /* Non-prefixed version, 
+                                    currently supported by Chrome and Opera */
+}
+.click_enabled {
+    -webkit-touch-callout: inherit; /* iOS Safari */
+    -webkit-user-select: inherit;   /* Chrome 6.0+, Safari 3.1+, Edge & Opera 15+ */
+    -moz-user-select: inherit;      /* Firefox */
+    -ms-user-select: inherit;       /* IE 10+ and Edge */
+    user-select: inherit;           /* Non-prefixed version, 
+                                    currently supported by Chrome and Opera */
+}

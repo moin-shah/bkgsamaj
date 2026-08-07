@@ -1,0 +1,638 @@
+:root {
+    margin: 0;
+    padding: 0;
+    /* Brand primary + shades (same hue family) */
+    --color-primary: #073463;
+    --color-primary-dark: #052747;
+    --color-primary-darker: #041d33;
+    --color-primary-mid: #0a4a7a;
+    --color-primary-light: #0d5590;
+    --color-accent-soft: #8ec5f0;
+    --color-accent-muted: rgba(142, 197, 240, 0.45);
+    /* Layout */
+    --sidebar-width: 220px;
+    --sidebar-collapsed: 58px;
+    --layout-gap: 14px;
+    /* Sidebar — one base tone; items use translucent overlays (no second “card”) */
+    --sidebar-bg: var(--color-primary);
+    --sidebar-rail: rgba(255, 255, 255, 0.1);
+    --sidebar-submenu-bg: transparent;
+    --sidebar-item-hover: rgba(255, 255, 255, 0.1);
+    --sidebar-item-active: rgba(255, 255, 255, 0.16);
+    --sidebar-border-active: var(--color-accent-soft);
+    --text-soft: rgba(255, 255, 255, 0.78);
+    --text-strong: #ffffff;
+    /* Main workspace (pairs with #073463) */
+    --content-canvas: #e4e9f0;
+    --content-surface: #ffffff;
+    --content-border: rgba(7, 52, 99, 0.08);
+    --content-shadow: 0 4px 28px rgba(7, 52, 99, 0.07);
+}
+body {
+    background-color: var(--content-canvas);
+    font-family: 'Roboto', sans-serif;
+}
+body.lead_portal.lead-admin-panel {
+    overflow-x: hidden;
+}
+.ui-multiselect span.ui-icon {
+    float: none !important;
+}
+/* Sidebar */
+.page-sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    background: linear-gradient(180deg, #06467b 0%, #021d3b 45%, #03111e 100%);
+    /* background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary) 45%, var(--color-primary-dark) 100%); */
+    border-right: 1px solid var(--sidebar-rail);
+    box-shadow: 2px 0 24px rgba(4, 20, 40, 0.18);
+    transition: width 0.25s ease;
+    overflow-x: hidden;
+}
+body.page-sidebar-closed .page-sidebar-wrapper {
+    width: var(--sidebar-collapsed);
+    overflow: visible !important;
+}
+body.page-sidebar-closed .page-sidebar {
+    overflow: visible !important;
+}
+.page-sidebar {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    border-radius: 0 !important;
+    background: transparent;
+    transition: width 0.25s ease;
+}
+body.lead_portal .page-sidebar {
+    background: transparent !important;
+}
+.page-sidebar .page-sidebar-menu {
+    flex: 1;
+    margin-top: 8px !important;
+    padding-bottom: 40px;
+}
+.sidebar-toggler-wrapper {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 5px !important;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin-bottom: 15px !important;
+    box-sizing: border-box;
+}
+.page-sidebar .sidebar-toggler {
+    background: url('../../../../images/toggle.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+    margin: 0 !important;
+    float: none !important;
+}
+/* Metronic layout.css wins with margin-right:8px + float:right on this selector — keep icon centered */
+body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper .sidebar-toggler,
+body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper:hover .sidebar-toggler {
+    float: none !important;
+    margin: 0 auto !important;
+}
+.page-sidebar-closed .sidebar-toggler {
+    transform: scaleX(-1);
+}
+.sidebar-toggler-wrapper .pwrdby {
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    font-size: 10px;
+    font-weight: 500;
+    display: block;
+    white-space: pre;
+}
+.page-sidebar-closed .sidebar-toggler-wrapper .pwrdby {
+    display: none;
+}
+.page-logo {
+    text-align: center;
+    margin-top: 10px;
+    padding: 6px 0 14px;
+    transition: border-color 0.2s ease;
+    border-bottom: 1px solid var(--sidebar-rail);
+}
+.page-logo img {
+    height: 80px;
+    max-width: 150px;
+    object-fit: contain;
+    filter: none;
+}
+.logo_link:hover {
+    color: transparent;
+}
+.small-logo {
+    display: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+}
+.page-sidebar-closed .page-logo img {
+    display: none;
+}
+.page-sidebar-closed .page-logo .small-logo {
+    display: block;
+    margin-inline: auto;
+}
+.page-sidebar-menu a {
+    border: 0 !important;
+    padding-left: 20px !important;
+    white-space: nowrap ;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li > a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li > a > i {
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li.active > a > i,
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li:hover > a > i {
+    color: #ffffff !important;
+}
+.page-sidebar-closed .page-sidebar .page-sidebar-menu > li > a > i {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li > a > .title {
+    flex: 1;
+    min-width: 0;
+}
+.page-sidebar-menu.page-sidebar-menu-closed>li>a {
+    opacity: 0.7;
+}
+.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:not(.sidebar-nav-logout):hover > a,
+.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.active:not(.sidebar-nav-logout) > a {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-strong);
+    opacity: 1;
+}
+/* Avoid animating every descendant’s width (causes layout “full width” hover glitches) */
+.page-sidebar,
+.page-sidebar .page-sidebar-menu,
+.page-sidebar .page-sidebar-menu > li > a {
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease,
+        margin-left 0.3s ease, width 0.3s ease, opacity 0.2s ease;
+}
+.page-sidebar .page-sidebar-menu>li {
+    margin-bottom: 5px;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu>li {
+    margin-inline: 6px;
+    
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu>li>a {
+    border-left: 3px solid transparent !important;
+    opacity: 1;
+    color: var(--text-soft);
+    border-radius: 8px !important;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu>li:hover>a,
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu>li.active>a {
+    opacity: 1;
+    color: var(--text-strong);
+    background: var(--sidebar-item-active);
+    border-radius: 8px !important;
+    border-left: 3px solid var(--sidebar-border-active) !important;
+    box-shadow: none;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu>li:not(.active):hover>a {
+    background: var(--sidebar-item-hover);
+    border-left-color: transparent !important;
+    color: var(--text-strong);
+}
+.page-sidebar-menu i {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 0 !important;
+    vertical-align: middle;
+}
+.dashboardi {
+    background-image: url('../../../../images/dashboard_icon.svg');
+}
+.lead_i {
+    background-image: url('../../../../images/customer_lead.svg');
+}
+.inviteuser_i {
+    background-image: url('../../../../images/mail.svg');
+}
+.revenuebycategory_i {
+    background-image: url('../../../../images/revenue_estimator.svg');
+}
+.logouti {
+    background-image: url('../../../../images/logout.svg');
+}
+.page-sidebar-menu .title {
+    color: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 8px;
+    letter-spacing: 0.01em;
+}
+.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .title {
+    display: none !important;
+}
+.page-sidebar-menu.page-sidebar-menu-closed>li:hover {
+    box-shadow: none;
+}
+.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover {
+    width: unset !important;
+}
+/* Metronic “selected” triangle — clashes with our pill rail; hide */
+body.lead_portal .page-sidebar .page-sidebar-menu > li > a > .selected {
+    display: none !important;
+}
+
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li > a:focus {
+    outline: none;
+}
+body:not(.page-sidebar-closed) .page-sidebar .page-sidebar-menu > li > a:focus-visible {
+    outline: 2px solid var(--sidebar-border-active);
+    outline-offset: 2px;
+}
+
+/* Logout — subtle danger tint (expanded + collapsed sidebar) */
+body.lead_portal.lead-admin-panel .page-sidebar .page-sidebar-menu > li.sidebar-nav-logout > a {
+    color: #fca5a5;
+}
+body.lead_portal.lead-admin-panel .page-sidebar .page-sidebar-menu > li.sidebar-nav-logout > a > i,
+body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-nav-logout > a > i {
+    color: #fca5a5 !important;
+}
+body.lead_portal.lead-admin-panel .page-sidebar .page-sidebar-menu > li.sidebar-nav-logout:hover > a,
+body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-nav-logout:hover > a {
+    background: rgba(248, 113, 113, 0.14) !important;
+    color: #fecaca !important;
+    border-left-color: rgba(248, 113, 113, 0.55) !important;
+    box-shadow: none;
+    opacity: 1 !important;
+}
+body.lead_portal.lead-admin-panel .page-sidebar .page-sidebar-menu > li.sidebar-nav-logout:hover > a > i,
+body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-nav-logout:hover > a > i {
+    color: #fecaca !important;
+}
+.page-sidebar-closed .page-sidebar .page-sidebar-menu > li.sidebar-nav-logout > a {
+    opacity: 0.95;
+}
+/* Header — sticky on scroll (do not use navbar-fixed-top; it forces position:fixed) */
+.page-header.navbar {
+    height: 48px;
+    background: var(--content-surface);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--content-border);
+    box-shadow: 0 2px 12px rgba(7, 52, 99, 0.06);
+}
+body.lead_portal.lead-admin-panel .lead-admin-topbar.navbar {
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 48px;
+    margin-bottom: 0;
+    z-index: 1000 !important;
+    background-color: var(--content-surface) !important;
+}
+.page-header-fixed .page-container {
+    margin-top: 0;
+}
+.page-header-inner {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 38px;
+    max-width: 100%;
+}
+.page-header-inner .username {
+    color: var(--color-primary);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+.page-header-inner .username .emoji {
+    font-size: 18px;
+}
+.page-header-inner .navbar-nav {
+    height: fit-content;
+}
+.page-header-inner .navbar-nav>li>a {
+    padding: 0;
+}
+.page-header-inner .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.page-header.navbar .top-menu .navbar-nav {
+    margin: 0;
+
+}
+/* Main shell — content tracks sidebar + intentional gutter */
+.lead-admin-page-container {
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--content-canvas) 0%, #dce4ee 100%);
+    max-width: 100%;
+}
+/* overflow-x on this shell breaks position:sticky for the header */
+body.lead_portal.lead-admin-panel .lead-admin-page-container {
+    overflow-x: visible;
+}
+body.lead_portal.lead-admin-panel .lead-admin-page-content {
+    padding: 0 0 28px 0;
+    background: transparent !important;
+    gap: 12px;
+    margin-right: var(--layout-gap);
+    box-sizing: border-box;
+}
+/* Metronic sets .page-content { background:#fff } — show canvas in the gutter beside sidebar */
+body.lead_portal.lead-admin-panel .lead-admin-page-container .page-content {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+@media (min-width: 992px) {
+    body.lead_portal.lead-admin-panel .lead-admin-page-content > .page-header.navbar {
+        margin-left: calc(-1 * var(--layout-gap));
+        margin-right: calc(-1 * var(--layout-gap));
+        width: calc(100% + (2 * var(--layout-gap)));
+        max-width: none;
+    }
+}
+.lead-admin-page-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+}
+.user-details-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border-radius: 999px !important;
+    background: rgba(7, 52, 99, 0.04);
+    border: 1px solid var(--content-border);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.user-details-wrapper:hover {
+    background: rgba(7, 52, 99, 0.07);
+    border-color: rgba(7, 52, 99, 0.12);
+    box-shadow: 0 1px 4px rgba(7, 52, 99, 0.06);
+}
+/* Minimal header user strip (no pill) — matches #073463 theme */
+body.lead_portal.lead-admin-panel .user-details-wrapper {
+    gap: 10px;
+    padding: 0;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+body.lead_portal.lead-admin-panel .user-details-wrapper:hover {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+body.lead_portal.lead-admin-panel .user-avatar {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: #fff;
+    border: 1px solid rgba(7, 52, 99, 0.14);
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(7, 52, 99, 0.06);
+}
+body.lead_portal.lead-admin-panel .user-details .name {
+    color: #374151;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.35;
+    max-width: min(42vw, 280px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.user-avatar {
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 600;
+    background: linear-gradient(180deg, #f0f6fc 0%, #e2edf8 100%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(7, 52, 99, 0.15);
+}
+.user-details .name {
+    color: #1a2d42;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 2px;
+}
+.user-details .role {
+    color: #565656;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 0;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle {
+    padding: 0;
+}
+/* content — only the shell from main_column2; views often duplicate .page-content-wrapper inside $content */
+.lead-admin-page-container > .page-content-wrapper > .page-content {
+    padding: 0 !important;
+}
+/* Kill doubled sidebar offset + float from nested Metronic wrappers inside views */
+.lead-admin-page-container > .page-content-wrapper > .page-content .page-content-wrapper {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    clear: both;
+}
+.lead-admin-page-container > .page-content-wrapper > .page-content .page-content-wrapper .page-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+}
+.page-content-wrapper .page-content-inner {
+    padding: 20px 22px 28px;
+    background-color: var(--content-surface);
+    height: 100%;
+    min-height: calc(100dvh - 48px);
+    border-radius: 12px;
+    margin: 12px 8px 20px 0;
+    border: 1px solid var(--content-border);
+    box-shadow: var(--content-shadow);
+}
+body.lead_portal.lead-admin-panel .page-content-wrapper .page-content-inner {
+    margin: 16px var(--layout-gap) 24px 0;
+    padding: 24px 26px 32px;
+}
+.daterangepicker th.month {
+    font-weight: 600;
+}
+
+.daterangepicker td.disabled, .daterangepicker option.disabled {
+    text-decoration: none !important;
+}
+@media (min-width:992px) {
+    .page-sidebar {
+        width: var(--sidebar-width);
+    }
+    /* Sidebar width + gutter; matching gutter on the right */
+    .lead-admin-page-container > .page-content-wrapper > .page-content {
+        margin-left: calc(var(--sidebar-width) + var(--layout-gap)) !important;
+        margin-right: var(--layout-gap) !important;
+        transition: margin-left 0.25s ease;
+    }
+    .page-sidebar-closed .page-sidebar,
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
+        width: var(--sidebar-collapsed) !important;
+        background: transparent;
+    }
+    .page-sidebar-menu {
+        margin-top: 20px !important;
+    }
+    .page-sidebar-closed .lead-admin-page-container > .page-content-wrapper > .page-content {
+        margin-left: calc(var(--sidebar-collapsed) + var(--layout-gap)) !important;
+        margin-right: var(--layout-gap) !important;
+    }
+    /*
+     * Metronic sets li.sidebar-toggler-wrapper:hover { width: 45px } — narrower than the rail, so the
+     * flex-centered toggler appears to jump. Pin the row to full rail width on hover and default.
+     */
+    body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper,
+    body.lead_portal.lead-admin-panel.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper:hover {
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        box-shadow: none !important;
+    }
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a {
+        position: relative;
+    }
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a::after {
+        content: attr(data-title);
+        position: absolute;
+        left: calc(var(--sidebar-collapsed) + 7px);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--color-primary-dark);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 14px;
+        border-radius: 8px;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease, margin-left 0.2s ease;
+        pointer-events: none;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(4, 20, 40, 0.25);
+        margin-left: 10px;
+    }
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--sidebar-collapsed) - 2px);
+        top: 50%;
+        transform: translateY(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent var(--color-primary-dark) transparent transparent;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease, margin-left 0.2s ease;
+        margin-left: 10px;
+    }
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a::after,
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a::before {
+        opacity: 1;
+        visibility: visible;
+        margin-left: 0;
+    }
+    /* Sticky toolbar: match content inset; avoid 100vw (causes horizontal scrollbar) */
+    body.lead_portal.lead-admin-panel:not(.page-sidebar-closed) .topsection_bottom_part.sticky_div {
+        left: calc(var(--sidebar-width) + var(--layout-gap));
+        right: 0;
+        width: auto !important;
+        max-width: none !important;
+        box-sizing: border-box;
+    }
+    body.lead_portal.lead-admin-panel.page-sidebar-closed .topsection_bottom_part.sticky_div {
+        left: calc(var(--sidebar-collapsed) + var(--layout-gap));
+        right: 0;
+        width: auto !important;
+        max-width: none !important;
+        box-sizing: border-box;
+    }
+    .lead-admin-page-container > .page-content-wrapper {
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 991px) {
+    .page-sidebar-wrapper {
+        width: auto;
+        max-width: 100%;
+    }
+    .page-sidebar .selected, .page-sidebar.navbar-collapse.collapse {
+        display: block !important;
+    }
+    .page-sidebar .selected, .page-sidebar.navbar-collapse.collapse {
+        margin: 0;
+    }
+}

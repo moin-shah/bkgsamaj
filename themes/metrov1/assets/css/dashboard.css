@@ -1,0 +1,325 @@
+.section {
+    border-radius: 8px !important;
+    background: #FFF;
+    padding: 20px !important;
+    box-shadow: 0 0.895px 1.791px 0 rgba(0, 0, 0, 0.14);
+}
+
+.d-title {
+    color: #1A3353;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.cu-date-picker input,
+.cu-date-picker input:focus-visible {
+    outline: none;
+    border: none;
+    padding: 8px 0;
+    font-size: 12px;
+    width: 162px;
+}
+
+.cu-date-picker {
+    padding: 0 14px;
+    border-radius: 6px !important;
+    gap: 12px;
+    border: 0.8px solid #E6EBF1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cu-date-picker:focus-within {
+    border-color: #4b89ff;
+    box-shadow: 0 8px 24px rgba(75,137,255,0.06);
+}
+
+.cu-date-picker i::before {
+    transform: translateY(-50%);
+}
+
+.cu-date-picker i {
+    color: #767676a6;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+.summary-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+.summary-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+    border-radius: 8px !important;
+    padding: 14px 20px;
+    border: 0.794px solid #EBEEF2;
+    background: #FFF;
+    transition: all 0.2s ease;
+    box-shadow: 0 0.755px 1.511px 0 rgba(0, 0, 0, 0.14);
+}
+
+.summary-card:hover {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
+    text-decoration: none !important;
+}
+
+.summary-card .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    background: #f1f4ff;
+    color: #3454d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.summary-card h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    color: #1A3353;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.summary-card p {
+    color: #333;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    text-decoration: none;
+}
+.summary-card .summary-card-title {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.summary-card .info {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-card .info i {
+    color: #4A75BC;
+    font-size: 14px !important;
+}
+
+.summary-card .info .details {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 275px;
+    max-width: calc(100vw - 40px);
+    background: #ffffff;
+    color: #223;
+    border-radius: 8px !important;
+    padding: 10px 12px;
+    box-shadow: 0 2px 15px 5px rgba(20, 40, 80, 0.08);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    z-index: 9999;
+    text-align: left;
+    pointer-events: auto;
+}
+
+.summary-card .info .details::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    filter: drop-shadow(0 -2px 2px rgba(20, 40, 80, 0.03));
+}
+
+.summary-card .info:hover .details,
+.summary-card .info:focus-within .details,
+.summary-card .info.show .details {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.12s ease-in-out;
+}
+
+.revenue-card {
+    position: relative;
+}
+
+.currency-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    background: #4A75BC;
+    border-radius: 50px;
+    overflow: hidden;
+    border-radius: 15px !important;
+}
+
+.currency-toggle .toggle-btn {
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 7px 1px 7px;
+    border-radius: 50% !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 2px;
+}
+
+.currency-toggle .toggle-btn.active {
+    background: #ffffff;
+    color: #4A75BC;
+}
+
+.currency-toggle .toggle-btn:focus-visible {
+    outline: none;
+}
+
+.exchange-rate {
+    font-size: 11px;
+    color: #878787;
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+}
+
+.exchange-rate img {
+    width: 12px;
+    margin-right: 3px;
+}
+
+.dashboard-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.grid-left {
+    flex: 2;
+    min-width: 320px;
+}
+
+.grid-right {
+    flex: 1;
+    min-width: 280px;
+}
+
+.grid-right .section {
+    padding-bottom: 2px !important;
+}
+
+.chart-box canvas {
+    height: 340px !important;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px 5px 0;
+}
+
+.chart-box {
+    height: 340px;
+    position: relative;
+    margin-top: 35px;
+}
+
+.insights-table {
+    width: 100%;
+    margin-top: 16px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.insights-table th,
+.insights-table td {
+    padding: 8px 15px;
+    text-align: left;
+    font-size: 14px;
+    color: #1A1A40;
+}
+
+.insights-table td:last-child,
+.insights-table th:last-child {
+    text-align: right;
+}
+
+.insights-table thead tr {
+    background: rgba(227, 237, 249, 0.80);
+    border-radius: 5px !important;
+}
+
+.insights-table thead tr th:first-child {
+    border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+}
+
+.insights-table thead tr th:last-child {
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+.insights-table tbody {
+    margin-top: 20px;
+}
+
+.insights-table tbody tr:hover,
+.insights-table tbody tr.highlighted {
+    background: #F1F6FC;
+}
+
+.insights-table tbody tr:hover td:first-child,
+.insights-table tbody tr.highlighted td:first-child {
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.insights-table tbody tr:hover td:last-child,
+.insights-table tbody tr.highlighted td:last-child {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.insights-table thead th {
+    color: #232425;
+    font-weight: 600;
+}
+
+#revenue_inr {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .summary-cards {
+        flex-direction: column;
+    }
+
+    .dashboard-grid {
+        flex-direction: column;
+    }
+}
