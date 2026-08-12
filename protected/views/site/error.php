@@ -6,8 +6,8 @@
       <h1 class="error-code">Oops!</h1>
       <h2 class="error-title">Something went wrong...</h2>
       <p class="error-message">
-        Please try reloading the page. If the issue persists, contact us at 
-        <a href="mailto:techsupport@softwaresuggest.com">techsupport@softwaresuggest.com</a> — we’ll be happy to help!
+        Please try reloading the page. If the issue persists, contact us at
+        <a href="mailto:info@bkgsamaj.org">info@bkgsamaj.org</a> — we’ll be happy to help!
       </p>
       <a href="<?= Yii::app()->homeUrl; ?>" class="btn-back">
         Go Back Home

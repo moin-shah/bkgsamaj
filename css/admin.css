@@ -1,0 +1,226 @@
+:root {
+	--bkgs-primary: #7a1f2b;
+	--bkgs-primary-dark: #5c1620;
+	--bkgs-accent: #d4a017;
+	--bkgs-sidebar-bg: #2b1114;
+	--bkgs-bg: #f5f3f0;
+	--bkgs-surface: #ffffff;
+	--bkgs-text: #2b2320;
+	--bkgs-muted: #6b5f57;
+	--bkgs-border: #e7ddd1;
+	--bkgs-radius: 0.75rem;
+}
+
+body.admin-body {
+	background: var(--bkgs-bg);
+	color: var(--bkgs-text);
+	font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	margin: 0;
+}
+
+.btn-bkgs-primary {
+	background: var(--bkgs-primary);
+	border-color: var(--bkgs-primary);
+	color: #fff;
+}
+
+.btn-bkgs-primary:hover {
+	background: var(--bkgs-primary-dark);
+	border-color: var(--bkgs-primary-dark);
+	color: #fff;
+}
+
+/* Shell layout */
+.admin-shell {
+	display: flex;
+	min-height: 100vh;
+}
+
+.admin-sidebar {
+	width: 240px;
+	flex-shrink: 0;
+	background: var(--bkgs-sidebar-bg);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem 1rem;
+}
+
+.admin-sidebar-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	font-weight: 700;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	margin-bottom: 1.5rem;
+}
+
+.admin-sidebar-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	flex-grow: 1;
+}
+
+.admin-sidebar-nav a {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	color: rgba(255, 255, 255, 0.75);
+	text-decoration: none;
+	padding: 0.65rem 0.8rem;
+	border-radius: 0.5rem;
+	font-size: 0.95rem;
+}
+
+.admin-sidebar-nav a:hover {
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
+}
+
+.admin-sidebar-nav a.active {
+	background: var(--bkgs-primary);
+	color: #fff;
+}
+
+.admin-nav-icon {
+	width: 1.4rem;
+	text-align: center;
+}
+
+.admin-nav-heading {
+	font-size: 0.68rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: rgba(255, 255, 255, 0.45);
+	padding: 14px 0.8rem 4px;
+}
+
+.admin-sidebar-footer {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding-top: 1rem;
+}
+
+.admin-main {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.admin-topbar {
+	background: var(--bkgs-surface);
+	border-bottom: 1px solid var(--bkgs-border);
+	padding: 1rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.admin-topbar-user {
+	text-align: right;
+}
+
+.admin-user-name {
+	display: block;
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.admin-user-role {
+	display: block;
+	font-size: 0.75rem;
+	color: var(--bkgs-muted);
+	text-transform: capitalize;
+}
+
+.admin-content {
+	padding: 1.5rem;
+	flex-grow: 1;
+}
+
+/* Cards */
+.admin-card {
+	background: var(--bkgs-surface);
+	border: 1px solid var(--bkgs-border);
+	border-radius: var(--bkgs-radius);
+	padding: 1.5rem;
+}
+
+.admin-card-narrow {
+	max-width: 640px;
+}
+
+.admin-stat-card {
+	background: var(--bkgs-surface);
+	border: 1px solid var(--bkgs-border);
+	border-radius: var(--bkgs-radius);
+	padding: 1.75rem;
+	text-align: center;
+}
+
+.admin-stat-card-muted {
+	opacity: 0.75;
+}
+
+.admin-stat-icon {
+	font-size: 1.75rem;
+	margin-bottom: 0.5rem;
+}
+
+.admin-stat-value {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--bkgs-primary);
+}
+
+.admin-stat-label {
+	color: var(--bkgs-muted);
+	font-size: 0.9rem;
+}
+
+.admin-notification-banner {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: rgba(212, 160, 23, 0.12);
+	border: 1px solid var(--bkgs-accent);
+	border-radius: var(--bkgs-radius);
+	padding: 0.65rem 1rem;
+	margin-bottom: 1.25rem;
+	font-size: 0.88rem;
+}
+
+.admin-notification-banner a { color: var(--bkgs-primary); font-weight: 600; }
+
+.admin-table th {
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	color: var(--bkgs-muted);
+	border-bottom-width: 1px;
+}
+
+/* Auth pages */
+.admin-auth-body {
+	background: linear-gradient(135deg, var(--bkgs-primary), var(--bkgs-primary-dark));
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+.admin-auth-wrapper {
+	width: 100%;
+	padding: 1.5rem;
+}
+
+.admin-auth-card {
+	background: var(--bkgs-surface);
+	border-radius: var(--bkgs-radius);
+	padding: 2.5rem;
+	max-width: 400px;
+	margin: 0 auto;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}

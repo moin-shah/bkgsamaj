@@ -8,9 +8,8 @@ date_default_timezone_set("Asia/Calcutta");
 
 return array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-    'name'=>'BKGS - Portal',
-    'theme'=>'metrov1',
-    'defaultController' => 'customerLead',
+    'name'=>'Bhadar Kathiya Ghanchi Samaj',
+    'defaultController' => 'site',
     'preload'=>array('log'),
     'import'=>array(
         'application.models.*',
@@ -18,6 +17,10 @@ return array(
         'ext.YiiMailer.YiiMailer',
     ),
     'modules'=>array(
+
+        'admin'=>array(
+            'class'=>'application.modules.admin.AdminModule',
+        ),
 
         'gii'=>array(
             'class'=>'system.gii.GiiModule',
@@ -30,12 +33,25 @@ return array(
             'urlFormat'=>'path',
             'showScriptName'=>false,
             'rules'=>array(
-                '' => 'site/login',
-                '<partner_slug:\w+>' => 'customerLead/dashboard',
-                '<partner_slug:\w+>/myleads' => 'customerLead/admin',
-                '<partner_slug:\w+>/<controller:\w+>/<action:\w+>/id/<id:\d+>' => '<controller>/<action>',
-                '<partner_slug:\w+>/inviteuser' => 'site/inviteuser',
-                '<partner_slug:\w+>/revenueestimator' => 'site/revenueestimator',
+                '' => 'site/index',
+                'about' => 'site/about',
+                'districts' => 'site/districts',
+                'contact' => 'site/contact',
+                'news' => 'news/index',
+                'news/<slug:[\w-]+>' => 'news/view',
+                'events' => 'event/index',
+                'events/<slug:[\w-]+>' => 'event/view',
+                'gallery' => 'gallery/index',
+                'gallery/<id:\d+>' => 'gallery/view',
+                'downloads' => 'download/index',
+                'raja-chithi' => 'rajaChithi/index',
+                'admin/login' => 'admin/default/login',
+                'admin/request-otp' => 'admin/default/requestOtp',
+                'admin/verify-otp' => 'admin/default/verifyOtp',
+                'admin/logout' => 'admin/default/logout',
+                'admin' => 'admin/dashboard/index',
+                'admin/<controller:\w+>/<action:\w+>' => 'admin/<controller>/<action>',
+                'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => 'admin/<controller>/<action>',
             ),
         ),
         'user'=>array(
