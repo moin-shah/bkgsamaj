@@ -16,7 +16,7 @@
 					<div class="row g-4">
 						<?php foreach ($categoryDownloads as $download): ?>
 							<div class="col-md-6 col-lg-4">
-								<div class="bkgs-card d-flex flex-column">
+								<div class="bkgs-card h-100 d-flex flex-column">
 									<h6 class="mb-2"><?php echo CHtml::encode($download->title); ?></h6>
 									<?php if ($download->district): ?>
 										<p class="text-muted small mb-2">&#128205; <?php echo CHtml::encode($download->district->name); ?></p>

@@ -36,7 +36,7 @@ $contactMeta = $contact ? $contact->getMeta() : array();
 				<div class="row g-4">
 					<?php foreach ($highlights as $highlight): ?>
 						<div class="col-6">
-							<div class="bkgs-card text-center">
+							<div class="bkgs-card h-100 text-center">
 								<div class="bkgs-highlight-stat"><?php echo CHtml::encode(preg_replace('/[^0-9+]/', '', $highlight) ?: '✓'); ?></div>
 								<div class="bkgs-highlight-label"><?php echo CHtml::encode(preg_replace('/^[0-9+]+\s*/', '', $highlight)); ?></div>
 							</div>
@@ -56,7 +56,7 @@ $contactMeta = $contact ? $contact->getMeta() : array();
 		<div class="row g-4">
 			<?php foreach ($districts as $district): ?>
 				<div class="col-md-6 col-lg-3">
-					<div class="bkgs-card">
+					<div class="bkgs-card h-100">
 						<div class="bkgs-card-icon">&#128205;</div>
 						<h5><?php echo CHtml::encode($district->name); ?></h5>
 						<p class="text-muted small mb-0"><?php echo CHtml::encode($district->description); ?></p>
@@ -95,7 +95,7 @@ $contactMeta = $contact ? $contact->getMeta() : array();
 				<?php if ($upcomingEvent === null): ?>
 					<p class="text-muted">No upcoming events scheduled.</p>
 				<?php else: ?>
-					<div class="bkgs-card">
+					<div class="bkgs-card h-100">
 						<span class="badge bkgs-badge-event mb-2"><?php echo CHtml::encode(date('d M Y', strtotime($upcomingEvent->start_at))); ?></span>
 						<h5><a href="/events/<?php echo CHtml::encode($upcomingEvent->slug); ?>"><?php echo CHtml::encode($upcomingEvent->title); ?></a></h5>
 						<p class="text-muted mb-0">&#128205; <?php echo CHtml::encode($upcomingEvent->venue ?: ($upcomingEvent->district ? $upcomingEvent->district->name : 'Samaj-wide')); ?></p>
@@ -113,7 +113,7 @@ $contactMeta = $contact ? $contact->getMeta() : array();
 		<div class="row g-4 justify-content-center text-center">
 			<?php if (!empty($contactMeta['address'])): ?>
 				<div class="col-md-4">
-					<div class="bkgs-card">
+					<div class="bkgs-card h-100">
 						<div class="bkgs-card-icon mx-auto">&#127968;</div>
 						<h6>Address</h6>
 						<p class="text-muted small mb-0"><?php echo CHtml::encode($contactMeta['address']); ?></p>
@@ -122,7 +122,7 @@ $contactMeta = $contact ? $contact->getMeta() : array();
 			<?php endif; ?>
 			<?php if (!empty($contactMeta['phone'])): ?>
 				<div class="col-md-4">
-					<div class="bkgs-card">
+					<div class="bkgs-card h-100">
 						<div class="bkgs-card-icon mx-auto">&#128222;</div>
 						<h6>Phone</h6>
 						<p class="text-muted small mb-0"><a href="tel:<?php echo CHtml::encode($contactMeta['phone']); ?>"><?php echo CHtml::encode($contactMeta['phone']); ?></a></p>
@@ -131,7 +131,7 @@ $contactMeta = $contact ? $contact->getMeta() : array();
 			<?php endif; ?>
 			<?php if (!empty($contactMeta['email'])): ?>
 				<div class="col-md-4">
-					<div class="bkgs-card">
+					<div class="bkgs-card h-100">
 						<div class="bkgs-card-icon mx-auto">&#9993;</div>
 						<h6>Email</h6>
 						<p class="text-muted small mb-0"><a href="mailto:<?php echo CHtml::encode($contactMeta['email']); ?>"><?php echo CHtml::encode($contactMeta['email']); ?></a></p>

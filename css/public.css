@@ -1,12 +1,12 @@
 :root {
-	--bkgs-primary: #7a1f2b;
-	--bkgs-primary-dark: #5c1620;
-	--bkgs-accent: #d4a017;
-	--bkgs-bg: #faf7f2;
+	--bkgs-primary: #1f5f4a;
+	--bkgs-primary-dark: #143f31;
+	--bkgs-accent: #b8763a;
+	--bkgs-bg: #f5f7f4;
 	--bkgs-surface: #ffffff;
-	--bkgs-text: #2b2320;
-	--bkgs-muted: #6b5f57;
-	--bkgs-border: #e7ddd1;
+	--bkgs-text: #212a24;
+	--bkgs-muted: #5f6d64;
+	--bkgs-border: #dde5e0;
 	--bkgs-radius: 0.75rem;
 }
 
@@ -108,20 +108,25 @@ a {
 	border: 1px solid var(--bkgs-border);
 	border-radius: var(--bkgs-radius);
 	padding: 1.75rem;
-	height: 100%;
 	transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Equal-height cards are opt-in via Bootstrap's .h-100, added only where a
+   card sits alongside real sibling columns in the same row. A card that is
+   the sole content of its column has no stable height to be 100% of, and
+   forcing it anyway inflates the box and throws off the page's flow height
+   (the footer overlap bug this replaced). */
+
 .bkgs-card:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 10px 24px rgba(122, 31, 43, 0.1);
+	box-shadow: 0 10px 24px rgba(31, 95, 74, 0.1);
 }
 
 .bkgs-card-icon {
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
-	background: rgba(122, 31, 43, 0.08);
+	background: rgba(31, 95, 74, 0.08);
 	color: var(--bkgs-primary);
 	display: flex;
 	align-items: center;
@@ -149,7 +154,7 @@ a {
 
 /* Footer */
 .bkgs-footer {
-	background: #211213;
+	background: #0f2e24;
 	color: rgba(255, 255, 255, 0.85);
 	padding: 3rem 0 2rem;
 }

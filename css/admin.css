@@ -1,13 +1,13 @@
 :root {
-	--bkgs-primary: #7a1f2b;
-	--bkgs-primary-dark: #5c1620;
-	--bkgs-accent: #d4a017;
-	--bkgs-sidebar-bg: #2b1114;
-	--bkgs-bg: #f5f3f0;
+	--bkgs-primary: #1f5f4a;
+	--bkgs-primary-dark: #143f31;
+	--bkgs-accent: #b8763a;
+	--bkgs-sidebar-bg: #0f2e24;
+	--bkgs-bg: #f5f7f4;
 	--bkgs-surface: #ffffff;
-	--bkgs-text: #2b2320;
-	--bkgs-muted: #6b5f57;
-	--bkgs-border: #e7ddd1;
+	--bkgs-text: #212a24;
+	--bkgs-muted: #5f6d64;
+	--bkgs-border: #dde5e0;
 	--bkgs-radius: 0.75rem;
 }
 
@@ -184,7 +184,7 @@ body.admin-body {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	background: rgba(212, 160, 23, 0.12);
+	background: rgba(184, 118, 58, 0.12);
 	border: 1px solid var(--bkgs-accent);
 	border-radius: var(--bkgs-radius);
 	padding: 0.65rem 1rem;

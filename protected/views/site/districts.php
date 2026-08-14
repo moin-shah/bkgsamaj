@@ -9,7 +9,7 @@
 			<div class="row g-4">
 				<?php foreach ($districts as $district): ?>
 					<div class="col-md-6 col-lg-4">
-						<div class="bkgs-card">
+						<div class="bkgs-card h-100">
 							<div class="bkgs-card-icon">&#128205;</div>
 							<h5><?php echo CHtml::encode($district->name); ?></h5>
 							<p class="text-muted small mb-0"><?php echo CHtml::encode($district->description); ?></p>

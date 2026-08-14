@@ -10,7 +10,7 @@
 			<div class="row g-4 mb-5">
 				<?php foreach ($upcomingEvents as $event): ?>
 					<div class="col-md-6 col-lg-4">
-						<div class="bkgs-card">
+						<div class="bkgs-card h-100">
 							<span class="badge bkgs-badge-event mb-2"><?php echo CHtml::encode(date('d M Y', strtotime($event->start_at))); ?></span>
 							<h5><a href="<?php echo Yii::app()->createUrl('/event/view', array('slug' => $event->slug)); ?>"><?php echo CHtml::encode($event->title); ?></a></h5>
 							<p class="text-muted small mb-0">&#128205; <?php echo CHtml::encode($event->venue ?: ($event->district ? $event->district->name : 'Samaj-wide')); ?></p>
@@ -27,7 +27,7 @@
 			<div class="row g-4">
 				<?php foreach ($pastEvents as $event): ?>
 					<div class="col-md-6 col-lg-4">
-						<div class="bkgs-card">
+						<div class="bkgs-card h-100">
 							<span class="badge bg-secondary mb-2"><?php echo CHtml::encode(date('d M Y', strtotime($event->start_at))); ?></span>
 							<h5><a href="<?php echo Yii::app()->createUrl('/event/view', array('slug' => $event->slug)); ?>"><?php echo CHtml::encode($event->title); ?></a></h5>
 							<p class="text-muted small mb-0">&#128205; <?php echo CHtml::encode($event->venue ?: ($event->district ? $event->district->name : 'Samaj-wide')); ?></p>

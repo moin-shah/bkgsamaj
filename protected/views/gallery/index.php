@@ -10,7 +10,7 @@
 				<?php foreach ($albums as $album): ?>
 					<?php $url = Yii::app()->createUrl('/gallery/view', array('id' => $album->id)); ?>
 					<div class="col-md-6 col-lg-4">
-						<div class="bkgs-card text-center">
+						<div class="bkgs-card h-100 text-center">
 							<a href="<?php echo $url; ?>">
 								<img src="<?php echo CHtml::encode($album->cover_image_url ?: '/images/logo/bkgs-logo.png'); ?>" alt="<?php echo CHtml::encode($album->title); ?>" style="width:100%;height:160px;object-fit:cover;border-radius:8px;" class="mb-3">
 							</a>
